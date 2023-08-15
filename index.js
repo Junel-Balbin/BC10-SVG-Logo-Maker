@@ -1,7 +1,6 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
-const {Triangle, Square, Circle} = require("./lib/shapes");
-
+const { Triangle, Square, Circle } = require("./lib/shapes");
 
 const questions = [
     {
@@ -39,18 +38,20 @@ async function run() {
         let shape;
         switch (shapeType) {
             case "Triangle":
-                shape = new Triangle(shapeColor);
+                shape = new Triangle();
                 break;
             case "Square":
-                shape = new Square(shapeColor);
+                shape = new Square();
                 break;
             case "Circle":
-                shape = new Circle(shapeColor);
+                shape = new Circle();
                 break;
             default:
                 console.log("Invalid shape type");
                 return;
         }
+
+        shape.setColor(shapeColor);
 
         const svgLogo = generateSVGLogo(text, textColor, shape);
 
@@ -64,7 +65,7 @@ async function run() {
 }
 
 function generateSVGLogo(text, textColor, shape) {
-    const shapeSVG = shape.generateSVG(); 
+    const shapeSVG = shape.render();
     const textSVG = `<text x="10" y="30" fill="${textColor}">${text}</text>`;
     
     const svg = `
