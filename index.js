@@ -1,6 +1,6 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
-const {Circle, Square, Triangle} = require("./lib/shapes");
+const {Triangle, Square, Circle} = require("./lib/shapes");
 
 
 const questions = [
@@ -61,6 +61,20 @@ async function run() {
     } catch (error) {
         console.error("Error occurred:", error);
     }
+}
+
+function generateSVGLogo(text, textColor, shape) {
+    const shapeSVG = shape.generateSVG(); 
+    const textSVG = `<text x="10" y="30" fill="${textColor}">${text}</text>`;
+    
+    const svg = `
+        <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+            ${shapeSVG}
+            ${textSVG}
+        </svg>
+    `;
+    
+    return svg;
 }
 
 run();
