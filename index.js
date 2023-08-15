@@ -66,10 +66,10 @@ async function run() {
 
 function generateSVGLogo(text, textColor, shape) {
     const shapeSVG = shape.render();
-    const textSVG = `<text x="10" y="30" fill="${textColor}">${text}</text>`;
+    const textSVG = `<text x="150" y="140" font-size="50" text-anchor="middle" fill="${textColor}">${text}</text>`;
     
     const svg = `
-        <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+        <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
             ${shapeSVG}
             ${textSVG}
         </svg>
